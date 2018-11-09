@@ -7,21 +7,22 @@ class Dna(str):
         codes = 'AaCcGgTtRrWwSsYyKkVvHhDdBbNn'
         for i in self:            
             if i not in codes:
-                raise Exception('String is a DNA sequence')                    
+                raise Exception('String is not a DNA sequence')                    
 
     def gc(self):
         self = self.upper()
         gc_percent = round(((self.count('G') + self.count('C'))*100)/len(self), 1)
-        gc_percent_str = str(gc_content) + '%'
+        gc_percent_str = str(gc_percent) + '%'
         return gc_percent_str
 
     def reverse_complement(self):
         self = self.upper()
-        return self.translate(self.maketrans('ACGT', 'TGCA'))
-
+        compl_sequence = self.translate(self.maketrans('ACGTRWSYKMVHDBN', 'TGCAYWSRMKBDHVN'))
+        return compl_sequence[::-1]
+    
     def transcribe(self):
         self = self.upper()
-        return self.translate(self.maketrans('ACGT', 'UCGA'))
+        return self.translate(self.maketrans('ACGTRWSYKMVHDBN', 'UGCAYWSRMKBDHVN'))
 
 
 class Rna(str):
@@ -37,10 +38,10 @@ class Rna(str):
     def gc(self):
         self = self.upper()
         gc_percent = round((self.count('G') + self.count('C'))*100/len(self), 1)
-        gc_percent_str = str(gc_content) + '%'
+        gc_percent_str = str(gc_percent) + '%'
         return gc_percent_str
 
     def reverse_complement(self):
         self = self.upper()
-        compl_sequence = self.translate(self.maketrans('AUGC', 'UACG'))
-        return compl_sequence
+        compl_sequence = self.translate(self.maketrans('ACGURWSYKMVHDBN', 'UGCAYWSRMKBDHVN'))
+        return compl_sequence[::-1]
