@@ -5,7 +5,7 @@ class Dna(str):
     def __init__(self, dna_seq):  
         self.dna_seq = dna_seq
         codes = 'AaCcGgTtRrWwSsYyKkVvHhDdBbNn'
-        for i in self:            
+        for i in dna_seq:            
             if i not in codes:
                 raise Exception('String is not a DNA sequence')                    
 
