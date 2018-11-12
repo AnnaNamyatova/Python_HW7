@@ -16,8 +16,8 @@ class Dna(str):
 
     def reverse_complement(self):
         self = self.upper()
-        compl_sequence = self.translate(self.maketrans('ACGTRWSYKMVHDBN', 'TGCAYWSRMKBDHVN'))
-        return compl_sequence[::-1]
+        complement_sequence = self.translate(self.maketrans('ACGTRWSYKMVHDBN', 'TGCAYWSRMKBDHVN'))
+        return complement_sequence[::-1]
     
     def transcribe(self):
         self = self.upper()
@@ -42,5 +42,5 @@ class Rna(str):
 
     def reverse_complement(self):
         self = self.upper()
-        compl_sequence = self.translate(self.maketrans('ACGURWSYKMVHDBN', 'UGCAYWSRMKBDHVN'))
-        return compl_sequence[::-1]
+        complement_sequence = self.translate(self.maketrans('ACGURWSYKMVHDBN', 'UGCAYWSRMKBDHVN'))
+        return complement_sequence[::-1]
